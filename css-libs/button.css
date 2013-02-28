@@ -1,0 +1,66 @@
+.button-container {
+    border: 1px solid #404040;
+    box-shadow: 0px 1px 3px 0px #e2e7ea;
+    border-radius: 2px;
+    margin: 1px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.button-container .button-label {
+    font-family: Verdana,monospace;
+    font-size: 12px;
+    font-weight: bold;
+    float: left;
+}
+
+.button-container.button-icon-position-left .button-label {
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.button-container.button-icon-position-right .button-label {
+    margin-right: 5px;
+    margin-top: 2px;
+}
+
+.button-container .button-icon {
+    width: 16px;
+    height: 16px;
+    float: left;
+    background-color: transparent;
+    background-image: url("../images/icons/icons-sprite-16x16.png");
+    background-repeat: no-repeat;
+}
+
+.button-container.button-icon-type-add .button-icon {
+    background-position: 0px 0px;
+}
+
+.button-container.button-icon-type-wall-minus .button-icon {
+    background-position: -126px 0px;
+}
+
+.button-container.button-icon-type-wall-add .button-icon {
+    background-position: -108px 0px;
+}
+
+.button-container.button-icon-type-empty-workspace .button-icon {
+    background-position: -90px 0px;
+}
+
+.button-container.button-icon-type-minus .button-icon {
+    background-position: -71px 0px;
+}
+
+.button-container.button-icon-type-add-grids .button-icon {
+    background-position: -55px 0px;
+}
+
+.button-container.button-icon-type-plus-mini .button-icon {
+    background-position: -37px 0px;
+}
+
+.button-container.button-icon-type-plus-green .button-icon {
+    background-position: -17px 0px;
+}
