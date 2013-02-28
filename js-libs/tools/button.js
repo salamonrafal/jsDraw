@@ -68,11 +68,11 @@ function buttonJSDraw (options) {
      * @type {Object}
      */
     this.events = {
-        click: function($this, e){},
-        dbclick: function($this, e){},
-        disable: function($this, e){},
-        enable: function($this, e){},
-        hover: function($this, e){}
+        click: function($this, e, $thisButton){},
+        dbclick: function($this, e, $thisButton){},
+        disable: function($this, e, $thisButton){},
+        enable: function($this, e, $thisButton){},
+        hover: function($this, e, $thisButton, action){}
     };
 
 
@@ -84,36 +84,48 @@ function buttonJSDraw (options) {
     /**
      * Button callback click
      */
-    var _event_click = function ($this, e) {
+    var _event_click = function ($this, e, $thisButton) {
         $this.events.click.call(this, $this, e);
     };
 
     /**
      * Button callback double click
      */
-    var _event_dbclick = function ($this, e) {
+    var _event_dbclick = function ($this, e, $thisButton) {
 
     };
 
     /**
      * Button callback disable
      */
-    var _event_disable = function ($this, e) {
+    var _event_disable = function ($this, e, $thisButton) {
 
     };
 
     /**
      * Button callback enable
      */
-    var _event_enable = function ($this, e) {
+    var _event_enable = function ($this, e, $thisButton) {
 
     };
 
     /**
      * Button callback hover
      */
-    var _event_hover = function ($this, e) {
+    var _event_hover = function ($this, e, $thisButton, action) {
+        var classTest  = /button-hover-active/gi;
+        var classes = $thisButton.className;
 
+        if(action == 'on') {
+            if (!classTest.test(classes)) {
+                classes += ' button-hover-active';
+            }
+        } else {
+            classes = classes.replace(classTest, '');
+        }
+
+        $thisButton.className = classes;
+        $this.events.hover.call(this, $this, e, $thisButton, action);
     };
 
     /**
@@ -162,15 +174,15 @@ function buttonJSDraw (options) {
         // Events
 
         el_div_btn_container.onclick = function(e) {
-            _event_click.call(this, $this, e);
+            _event_click.call(this, $this, e, el_div_btn_container);
         };
 
         el_div_btn_container.onmouseover = function (e) {
-            _event_hover.call(this, $this, 'on');
+            _event_hover.call(this, $this, e, el_div_btn_container, 'on');
         };
 
         el_div_btn_container.onmouseout = function (e) {
-            _event_hover.call(this, $this, 'out');
+            _event_hover.call(this, $this, e, el_div_btn_container, 'out');
         };
 
         return el_div_btn_container;
