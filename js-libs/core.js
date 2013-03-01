@@ -75,9 +75,9 @@ function coreJsDraw (options) {
     /**
      * Common methods
      *
-     * @type {toolsJSDraw}
+     * @type {domJSDraw}
      */
-    this.toolsJSDraw = new domJSDraw();
+    this.DOMJsDraw = new domJSDraw();
 
     /**
      * Canvas Manager modules
@@ -209,7 +209,7 @@ function coreJsDraw (options) {
         _debug('run createWorkspace function from coreJsDraw component');
 
         var $this = this;
-        var worksapceMainBox = this.toolsJSDraw.getHTMLElement('#'+ this.getWorkspaceID());
+        var worksapceMainBox = this.DOMJsDraw.getHTMLElement('#'+ this.getWorkspaceID());
         var toolbar = new toolbarJSDraw({
             'workspace_id': this.getWorkspaceID(),
             'canvasManager': this.canvasManager
@@ -221,7 +221,7 @@ function coreJsDraw (options) {
         worksapceMainBox.appendChild(_create_body($this));
         worksapceMainBox.appendChild(_create_footer($this));
 
-        this.toolsJSDraw.hideElement('.no-canvas');
+        this.DOMJsDraw.hideElement('.no-canvas');
 
         return this;
     };

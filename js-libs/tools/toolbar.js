@@ -2,22 +2,27 @@
  * Load Libs
  **/
 
-/* Add buttons module  */
+/* Add button module  */
 $jsLibLoader.appendScripts('tools/button.js', function (name, index) {
     _debug('JS lib loaded: ' + name);
 });
 
-/* Add buttons module  */
+/* Add menu module  */
 $jsLibLoader.appendScripts('tools/menu.js', function (name, index) {
     _debug('JS lib loaded: ' + name);
 });
 
-/* Add buttons module  */
+/* Add buttonset module  */
+$jsLibLoader.appendScripts('tools/buttonset.js', function (name, index) {
+    _debug('JS lib loaded: ' + name);
+});
+
+/* Add overlayer module  */
 $jsLibLoader.appendScripts('tools/overlayer.js', function (name, index) {
     _debug('JS lib loaded: ' + name);
 });
 
-/* Add buttons module  */
+/* Add form module  */
 $jsLibLoader.appendScripts('tools/form.js', function (name, index) {
     _debug('JS lib loaded: ' + name);
 });
@@ -148,14 +153,23 @@ function toolbarJSDraw (options) {
      */
     this.create = function () {
         var toolBarMainBox = document.createElement('div');
+        var listItems = _create_buttons_list(this);
+        var buttonset = new buttonsetJSDraw(listItems).getElement();
         toolBarMainBox.id = 'toolbar_' + this.workspace_id;
         toolBarMainBox.className = 'workspace-toolbar-main';
-
-        toolBarMainBox.appendChild(_create_buttons_list(this));
-
+        toolBarMainBox.appendChild(buttonset);
         return toolBarMainBox;
     }
 
+    /**
+     * Add button to toolbar
+     *
+     * @param button_id
+     * @param button_name
+     * @param button_style
+     * @param button_active
+     * @param button_events
+     */
     this.addButton = function(button_id, button_name, button_style, button_active, button_events) {
 
         if(button_style ===  undefined) {
@@ -211,7 +225,6 @@ function toolbarJSDraw (options) {
                 button_events.hover = function() {};
             }
         }
-
 
         this.buttons.push({
             id: button_id,

@@ -75,6 +75,13 @@ function buttonJSDraw (options) {
         hover: function($this, e, $thisButton, action){}
     };
 
+    /**
+     * Object to modify HTMLElements
+     *
+     * @type {domJSDraw}
+     */
+    this.DOMJsDraw = new domJSDraw();
+
 
     /**
      * [ Private Methods ]
@@ -113,12 +120,12 @@ function buttonJSDraw (options) {
      * Button callback hover
      */
     var _event_hover = function ($this, e, $thisButton, action) {
-        var $thisDom = new domJSDraw($thisButton);
+        $this.DOMJsDraw.setElement($thisButton);
 
         if(action == 'on') {
-            $thisDom.appendClass('button-hover-active');
+            $this.DOMJsDraw.appendClass('button-hover-active');
         } else {
-            $thisDom.removeClass('button-hover-active');
+            $this.DOMJsDraw.removeClass('button-hover-active');
         }
 
         $this.events.hover.call(this, $this, e, $thisButton, action);
@@ -241,6 +248,7 @@ function buttonJSDraw (options) {
         }
 
         this.htmlObject = _create_html_element(this);
+        this.DOMJsDraw = new domJSDraw();
 
         return this;
     };

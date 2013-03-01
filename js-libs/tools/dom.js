@@ -5,22 +5,15 @@
  * Time: 08:30
  * To change this template use File | Settings | File Templates.
  */
-/**
- * Created with JetBrains PhpStorm.
- * User: salamr01
- * Date: 25.01.13
- * Time: 13:20
- * To change this template use File | Settings | File Templates.
- */
 
-function domJSDraw (options) {
+function domJSDraw (oHTMLElement) {
 
     /**
      * HTML Object
      *
      * @type HTMLElement
      */
-    this.elements = null;
+    this.oHTMLElement = null;
 
     /**
      * Type of method access
@@ -73,24 +66,39 @@ function domJSDraw (options) {
     /**
      * Constructor
      *
-     * @param options
+     * @param oHTMLElement
      * @return {*}
      * @private
      */
-    this.__construct = function (options) {
+    this.__construct = function (oHTMLElement) {
 
-        if (options !== undefined) {
-            if (typeof options === 'object' &&
-                options.nodeType !== undefined &&
-                options.nodeType === 1) {
-                this.elements = options;
+        if (oHTMLElement !== undefined) {
+            if (typeof oHTMLElement === 'object' &&
+                oHTMLElement.nodeType !== undefined &&
+                oHTMLElement.nodeType === 1) {
+                this.oHTMLElement = oHTMLElement;
                 this.methodAccess = 'HTMLElement';
             }
         }
 
         _debug('constructor of toolsJSDraw component');
         return this;
-    }
+    };
+
+    /**
+     * Set HTMLElement
+     *
+     * @param oHTMLElement
+     */
+    this.setElement = function (oHTMLElement) {
+        if (typeof oHTMLElement === 'object' &&
+            oHTMLElement.nodeType !== undefined &&
+            oHTMLElement.nodeType === 1) {
+
+            this.oHTMLElement = oHTMLElement;
+            this.methodAccess = 'HTMLElement';
+        }
+    };
 
     /**
      * Return html element object
@@ -102,13 +110,12 @@ function domJSDraw (options) {
         return _get_html_element(elementName);
     };
 
-
     /**
      * Append class name to element
      * @param className
      */
     this.appendClass = function (className) {
-        var classes = this.elements.className;
+        var classes = this.oHTMLElement.className;
 
         if (!this.hasClass(className)) {
             if (classes != '') {
@@ -118,7 +125,7 @@ function domJSDraw (options) {
             }
         }
 
-        this.elements.className = classes;
+        this.oHTMLElement.className = classes;
     };
 
     /**
@@ -126,10 +133,20 @@ function domJSDraw (options) {
      * @param className
      */
     this.removeClass = function (className) {
-        var classes = this.elements.className;
-        var classTest = new RegExp(' ?'+ className);
-        classes = classes.replace(classTest, '');
-        this.elements.className = classes;
+        var aClasses = this.oHTMLElement.className.split(' ');
+        var newClasses = '';
+
+        for (var i = 0; i < aClasses.length; i++) {
+            if (aClasses[i] != className) {
+                if (i == 0) {
+                    newClasses += aClasses[i];
+                } else {
+                    newClasses += ' ' + aClasses[i];
+                }
+            }
+        }
+
+        this.oHTMLElement.className = newClasses;
     };
 
     /**
@@ -139,14 +156,17 @@ function domJSDraw (options) {
      * @return boolean
      */
     this.hasClass = function (className) {
-        var classes = this.elements.className;
-        var classTest = new RegExp(' ?'+ className);
+        var aClasses = this.oHTMLElement.className.split(' ');
+        var hasClass = false;
 
-        if (classTest.test(classes)) {
-            return true;
-        } else {
-            return false;
+
+        for (var i = 0; i < aClasses.length; i++) {
+            if (aClasses[i] == className) {
+                hasClass = true;
+            }
         }
+
+        return hasClass;
     };
 
     /**
@@ -155,17 +175,31 @@ function domJSDraw (options) {
      * @param elementName
      */
     this.hideElement = function (elementName) {
-        var elementObject = _get_html_element(elementName);
 
-        if (elementObject.style === undefined) {
-            for (var i = 0; i < elementObject.length; i++) {
-                elementObject[i].style.display = 'none';
+        if (this.methodAccess == 'static') {
+            var elementObject = _get_html_element(elementName);
+
+            if (elementObject.style === undefined) {
+                for (var i = 0; i < elementObject.length; i++) {
+                    elementObject[i].style.display = 'none';
+                }
+            } else {
+                elementObject.style.display = 'none';
+            }
+        } else if (this.methodAccess == 'HTMLElement') {
+            if (this.oHTMLElement.style === undefined) {
+                for (var i = 0; i < this.oHTMLElement.length; i++) {
+                    this.oHTMLElement[i].style.display = 'none';
+                }
+            } else {
+                this.oHTMLElement.style.display = 'none';
             }
         } else {
-            elementObject.style.display = 'none';
+            // throw error;
         }
+
     };
 
-    this.__construct(options);
+    this.__construct(oHTMLElement);
 }
 
