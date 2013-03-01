@@ -113,19 +113,16 @@ function buttonJSDraw (options) {
      * Button callback hover
      */
     var _event_hover = function ($this, e, $thisButton, action) {
-        var classTest  = /button-hover-active/gi;
-        var classes = $thisButton.className;
+        var $thisDom = new domJSDraw($thisButton);
 
         if(action == 'on') {
-            if (!classTest.test(classes)) {
-                classes += ' button-hover-active';
-            }
+            $thisDom.appendClass('button-hover-active');
         } else {
-            classes = classes.replace(classTest, '');
+            $thisDom.removeClass('button-hover-active');
         }
 
-        $thisButton.className = classes;
         $this.events.hover.call(this, $this, e, $thisButton, action);
+
     };
 
     /**

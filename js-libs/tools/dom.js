@@ -15,11 +15,23 @@
 
 function domJSDraw (options) {
 
+    /**
+     * HTML Object
+     *
+     * @type HTMLElement
+     */
+    this.elements = null;
+
+    /**
+     * Type of method access
+     * @type string
+     * @private
+     */
+    this.methodAccess = 'static';
 
     /**
      * [ Private Methods ]
      **/
-
 
     /**
      * Debug function
@@ -66,6 +78,16 @@ function domJSDraw (options) {
      * @private
      */
     this.__construct = function (options) {
+
+        if (options !== undefined) {
+            if (typeof options === 'object' &&
+                options.nodeType !== undefined &&
+                options.nodeType === 1) {
+                this.elements = options;
+                this.methodAccess = 'HTMLElement';
+            }
+        }
+
         _debug('constructor of toolsJSDraw component');
         return this;
     }
@@ -78,7 +100,54 @@ function domJSDraw (options) {
      */
     this.getHTMLElement = function(elementName) {
         return _get_html_element(elementName);
-    }
+    };
+
+
+    /**
+     * Append class name to element
+     * @param className
+     */
+    this.appendClass = function (className) {
+        var classes = this.elements.className;
+
+        if (!this.hasClass(className)) {
+            if (classes != '') {
+                classes += ' ' + className;
+            } else {
+                classes = className;
+            }
+        }
+
+        this.elements.className = classes;
+    };
+
+    /**
+     * Remove class name from element
+     * @param className
+     */
+    this.removeClass = function (className) {
+        var classes = this.elements.className;
+        var classTest = new RegExp(' ?'+ className);
+        classes = classes.replace(classTest, '');
+        this.elements.className = classes;
+    };
+
+    /**
+     * Check is element has class name
+     * @param className
+     *
+     * @return boolean
+     */
+    this.hasClass = function (className) {
+        var classes = this.elements.className;
+        var classTest = new RegExp(' ?'+ className);
+
+        if (classTest.test(classes)) {
+            return true;
+        } else {
+            return false;
+        }
+    };
 
     /**
      * Hide specific element
@@ -95,7 +164,7 @@ function domJSDraw (options) {
         } else {
             elementObject.style.display = 'none';
         }
-    }
+    };
 
     this.__construct(options);
 }
