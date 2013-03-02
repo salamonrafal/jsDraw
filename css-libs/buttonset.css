@@ -1,0 +1,34 @@
+ul.buttonset-container li.buttonset-item-container div.buttonset-button-conatiner{
+    border: none;
+    box-shadow: none !important;
+    border-radius: 0px;
+}
+
+ul.buttonset-container li.buttonset-item-container {
+    border: 0px solid #757575;
+    border-radius: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+ul.buttonset-container li.buttonset-item-container div.buttonset-button-conatiner {
+    border: 1px solid #757575;
+    border-right: 1px solid #a5aaad;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 5px;
+}
+
+ul.buttonset-container li.buttonset-item-container:first-child div.buttonset-button-conatiner {
+    border-radius: 5px 0px 0px 5px;
+}
+
+ul.buttonset-container li.buttonset-item-container.buttonset-item-last div.buttonset-button-conatiner {
+    border: 1px solid #757575;
+    border-radius: 0px 5px 5px 0px;
+}
+
+ul.buttonset-container li.buttonset-item-container div.buttonset-button-conatiner.button-hover-active {
+    background-color: #ffffff;
+    color: #000000;
+}
