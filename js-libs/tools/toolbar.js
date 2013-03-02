@@ -58,6 +58,18 @@ function toolbarJSDraw (options) {
      */
     this.buttons = [];
 
+    /**
+     * List of css class names
+     *
+     * @type {Object}
+     */
+    this.cssClassNames = {
+        toolbarList: 'toolbar-list',
+        toolbarListItem: 'toolbar-list-item',
+        clear: 'clear',
+        workspaceToolbarMain: 'workspace-toolbar-main'
+    };
+
 
     /**
      * [ Private Methods ]
@@ -67,17 +79,17 @@ function toolbarJSDraw (options) {
         var el_ul_list_btn = document.createElement('ul');
         var el_li_menu_item = document.createElement('li');
 
-        el_ul_list_btn.className = 'toolbar-list';
+        el_ul_list_btn.className = $this.cssClassNames.toolbarList;
 
         for (var i = 0; i < $this.buttons.length; i++) {
             el_li_menu_item = document.createElement('li');
-            el_li_menu_item.className= 'toolbar-list-item';
+            el_li_menu_item.className = $this.cssClassNames.toolbarListItem;
             el_li_menu_item.appendChild($this.buttons[i].object.getHtmlObject());
             el_ul_list_btn.appendChild(el_li_menu_item);
         }
 
         el_li_menu_item = document.createElement('li');
-        el_li_menu_item.className= 'clear';
+        el_li_menu_item.className = $this.cssClassNames.clear;
         el_ul_list_btn.appendChild(el_li_menu_item);
 
         return el_ul_list_btn;
@@ -146,7 +158,7 @@ function toolbarJSDraw (options) {
 
 
         return this;
-    }
+    };
 
     /**
      * Create toolbar
@@ -156,10 +168,10 @@ function toolbarJSDraw (options) {
         var listItems = _create_buttons_list(this);
         var buttonset = new buttonsetJSDraw(listItems).getElement();
         toolBarMainBox.id = 'toolbar_' + this.workspace_id;
-        toolBarMainBox.className = 'workspace-toolbar-main';
+        toolBarMainBox.className = this.cssClassNames.workspaceToolbarMain;
         toolBarMainBox.appendChild(buttonset);
         return toolBarMainBox;
-    }
+    };
 
     /**
      * Add button to toolbar
@@ -237,7 +249,7 @@ function toolbarJSDraw (options) {
                 events: button_events
             })
         });
-    }
+    };
 
     this.__construct(options);
 }

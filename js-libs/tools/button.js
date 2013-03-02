@@ -76,6 +76,21 @@ function buttonJSDraw (options) {
     };
 
     /**
+     * List of css class names
+     *
+     * @type {Object}
+     */
+    this.cssClassNames = {
+        buttonHoverActive: 'button-hover-active',
+        buttonContainer: 'button-container',
+        buttonIcon: 'button-icon',
+        buttonLabel: 'button-label',
+        clear: 'clear',
+        buttonIconPositionLeft: 'button-icon-position-left',
+        buttonIconPositionRight: 'button-icon-position-right'
+    };
+
+    /**
      * Object to modify HTMLElements
      *
      * @type {domJSDraw}
@@ -123,9 +138,9 @@ function buttonJSDraw (options) {
         $this.DOMJsDraw.setElement($thisButton);
 
         if(action == 'on') {
-            $this.DOMJsDraw.appendClass('button-hover-active');
+            $this.DOMJsDraw.appendClass($this.cssClassNames.buttonHoverActive);
         } else {
-            $this.DOMJsDraw.removeClass('button-hover-active');
+            $this.DOMJsDraw.removeClass($this.cssClassNames.buttonHoverActive);
         }
 
         $this.events.hover.call(this, $this, e, $thisButton, action);
@@ -145,15 +160,15 @@ function buttonJSDraw (options) {
         var el_div_clear = document.createElement('div');
 
         // Set class name
-        el_div_btn_container.className = 'button-container';
-        el_div_icon.className = 'button-icon';
-        el_div_label.className = 'button-label';
-        el_div_clear.className = 'clear';
+        el_div_btn_container.className = $this.cssClassNames.buttonContainer;
+        el_div_icon.className = $this.cssClassNames.buttonIcon;
+        el_div_label.className = $this.cssClassNames.buttonLabel;
+        el_div_clear.className = $this.cssClassNames.clear;
 
         if ($this.style.icon_position == 'left') {
-            el_div_btn_container.className += ' button-icon-position-left';
+            el_div_btn_container.className += ' ' + $this.cssClassNames.buttonIconPositionLeft;
         } else {
-            el_div_btn_container.className += ' button-icon-position-right';
+            el_div_btn_container.className += ' ' + $this.cssClassNames.buttonIconPositionRight;
         }
 
         if ($this.style.icon != '') {
@@ -190,7 +205,7 @@ function buttonJSDraw (options) {
         };
 
         return el_div_btn_container;
-    }
+    };
 
     /**
      * Debug function
@@ -260,7 +275,7 @@ function buttonJSDraw (options) {
      */
     this.getHtmlObject = function() {
         return this.htmlObject;
-    }
+    };
 
     this.__construct(options);
 }

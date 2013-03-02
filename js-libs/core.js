@@ -86,6 +86,16 @@ function coreJsDraw (options) {
      */
     this.canvasManager = new canvasManagerJSDraw({});
 
+    /**
+     * List of css class names
+     *
+     * @type {Object}
+     */
+    this.cssClassNames = {
+        workspaceBodyMain: 'workspace-body-main',
+        workspaceFooterMain: 'workspace-footer-main'
+    };
+
 
     /**
      * [ Private Methods ]
@@ -101,7 +111,7 @@ function coreJsDraw (options) {
         var mainBox = document.createElement('div');
 
         mainBox.id = 'body_' + $this.getWorkspaceID();
-        mainBox.className = 'workspace-body-main';
+        mainBox.className = $this.cssClassNames.workspaceBodyMain;
 
         mainBox.appendChild($this.canvasManager.create());
 
@@ -118,7 +128,7 @@ function coreJsDraw (options) {
         var mainBox = document.createElement('div');
 
         mainBox.id = 'footer_' + $this.getWorkspaceID();
-        mainBox.className = 'workspace-footer-main';
+        mainBox.className = $this.cssClassNames.workspaceFooterMain;
 
         return mainBox;
     }

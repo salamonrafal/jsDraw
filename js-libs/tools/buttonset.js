@@ -30,6 +30,20 @@ function buttonsetJSDraw (oHTMLElement) {
      */
     this.DOMJsDraw = new domJSDraw();
 
+    /**
+     * List of css class names
+     *
+     * @type {Object}
+     */
+    this.cssClassNames = {
+        buttonContainer: 'button-container',
+        buttonsetButtonConatiner: 'buttonset-button-conatiner',
+        buttonsetContainer: 'buttonset-container',
+        buttonsetItemContainer: 'buttonset-item-container',
+        buttonsetItemFirst: 'buttonset-item-first',
+        buttonsetItemLast: 'buttonset-item-last'
+    };
+
 
     /**
      * [ Private Methods ]
@@ -67,7 +81,7 @@ function buttonsetJSDraw (oHTMLElement) {
             if (childrenL2.length > 0) {
                 var button_container = childrenL2[0];
                 $this.DOMJsDraw.setElement(button_container);
-                if ($this.DOMJsDraw.hasClass('button-container')) {
+                if ($this.DOMJsDraw.hasClass(className)) {
                     countElements++;
                 }
             }
@@ -97,7 +111,7 @@ function buttonsetJSDraw (oHTMLElement) {
 
             this.oHTMLElement = oHTMLElement;
             var aChilds = this.oHTMLElement.children;
-            var countElement = _countChildByClass(this, this.oHTMLElement, 'button-container');
+            var countElement = _countChildByClass(this, this.oHTMLElement, this.cssClassNames.buttonContainer);
 
             for (var i = 0; i < aChilds.length; i++) {
                 var aChildChilds = aChilds[i].children;
@@ -106,23 +120,23 @@ function buttonsetJSDraw (oHTMLElement) {
                     var button_container = aChildChilds[0];
                     this.DOMJsDraw.setElement(button_container);
 
-                    if (this.DOMJsDraw.hasClass('button-container')) {
-                        this.DOMJsDraw.appendClass('buttonset-button-conatiner');
+                    if (this.DOMJsDraw.hasClass(this.cssClassNames.buttonContainer)) {
+                        this.DOMJsDraw.appendClass(this.cssClassNames.buttonsetButtonConatiner);
 
                         this.DOMJsDraw.setElement(oHTMLElement);
-                        if (!this.DOMJsDraw.hasClass('buttonset-container')) {
-                            this.DOMJsDraw.appendClass('buttonset-container');
+                        if (!this.DOMJsDraw.hasClass(this.cssClassNames.buttonsetContainer)) {
+                            this.DOMJsDraw.appendClass(this.cssClassNames.buttonsetContainer);
                         }
 
                         this.DOMJsDraw.setElement(aChilds[i]);
-                        if (!this.DOMJsDraw.hasClass('buttonset-item-container')) {
-                            this.DOMJsDraw.appendClass('buttonset-item-container');
+                        if (!this.DOMJsDraw.hasClass(this.cssClassNames.buttonsetItemContainer)) {
+                            this.DOMJsDraw.appendClass(this.cssClassNames.buttonsetItemContainer);
                         }
 
                         if (i == 0) {
-                            this.DOMJsDraw.appendClass('buttonset-item-first');
+                            this.DOMJsDraw.appendClass(this.cssClassNames.buttonsetItemFirst);
                         } else if ((i + 1) == countElement ) {
-                            this.DOMJsDraw.appendClass('buttonset-item-last');
+                            this.DOMJsDraw.appendClass(this.cssClassNames.buttonsetItemLast);
                         }
                     }
                 }
