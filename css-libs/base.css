@@ -8,9 +8,10 @@ div, p, span, a, h1, h2, h3, h4, h5, h6, td, th {
 
 div.workspace-main-container {
     border: 1px solid #a5aaad;
+    border-top: none;
     position: relative;
-    margin: 5px auto;
-    border-radius: 10px;
+    margin: 0px auto;
+    border-radius: 0px 0px 10px 10px;
     box-shadow: 5px 5px 10px 0px #74787a;
     overflow: hidden;
 }

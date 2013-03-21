@@ -1,0 +1,33 @@
+.menu-container {
+    position: absolute;
+    background-color: #A5AAAD;
+}
+
+.menu-list-items {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.menu-container .menu-item .button-container {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.menu-container .menu-item .button-container .button-label {
+    text-decoration: none !important;
+}
+
+.menu-container .menu-item .button-container.button-hover-active {
+    background-color: #FFFFFF;
+    color: #000000;
+    text-decoration: underline;
+}
+
+.menu-container .menu-item .button-container.button-hover-active .button-label {
+    text-decoration: underline !important;
+}
+
+.menu-container .menu-item .button-container {
+    border: none;
+}
