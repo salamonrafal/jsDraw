@@ -23,6 +23,11 @@ $jsLibLoader.appendScripts('plugins/canvas.js', function (name, index) {
     _debug('JS lib loaded: ' + name);
 });
 
+/* Add grids module  */
+$jsLibLoader.appendScripts('tools/menu.js', function (name, index) {
+    _debug('JS lib loaded: ' + name);
+});
+
 /**
  * Created with JetBrains PhpStorm.
  * User: salamr01

@@ -76,6 +76,13 @@ function buttonJSDraw (options) {
     };
 
     /**
+     * Array of sub items for buttons
+     *
+     * @type {Array}
+     */
+    this.menu_items = [];
+
+    /**
      * List of css class names
      *
      * @type {Object}
@@ -139,8 +146,14 @@ function buttonJSDraw (options) {
 
         if(action == 'on') {
             $this.DOMJsDraw.appendClass($this.cssClassNames.buttonHoverActive);
+
+            if ($this.menu_items.length > 0)
+                $this.DOMJsDraw.showElement('#menu-' + $this.id, true);
         } else {
             $this.DOMJsDraw.removeClass($this.cssClassNames.buttonHoverActive);
+
+            if ($this.menu_items.length > 0)
+                $this.DOMJsDraw.hideElement('#menu-' + $this.id, true);
         }
 
         $this.events.hover.call(this, $this, e, $thisButton, action);
@@ -204,6 +217,18 @@ function buttonJSDraw (options) {
             _event_hover.call(this, $this, e, el_div_btn_container, 'out');
         };
 
+        if ($this.menu_items.length > 0)  {
+            var menu = new menuJSDraw({
+                workspace_id: $this.workspace_id,
+                button_id: $this.id,
+                id: 'menu-' + $this.id,
+                items: $this.menu_items,
+                button_object_element: el_div_btn_container
+            });
+
+            el_div_btn_container.appendChild(menu.getHtmlObject());
+        }
+
         return el_div_btn_container;
     };
 
@@ -259,6 +284,10 @@ function buttonJSDraw (options) {
 
             if (options.events !== undefined) {
                 this.events = options.events;
+            }
+
+            if (options.menu_items !== undefined) {
+                this.menu_items = options.menu_items;
             }
         }
 

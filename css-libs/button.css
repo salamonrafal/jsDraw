@@ -1,9 +1,9 @@
 .button-container {
     border: 1px solid #404040;
     box-shadow: 0px 1px 3px 0px #e2e7ea;
-    border-radius: 2px;
+    border-radius: 0px;
     margin: 1px;
-    padding: 4px;
+    padding: 3px;
     cursor: pointer;
 }
 
@@ -16,7 +16,7 @@
 
 .button-container.button-icon-position-left .button-label {
     margin-left: 5px;
-    margin-top: 2px;
+    margin-top: 1px;
 }
 
 .button-container.button-icon-position-right .button-label {
@@ -39,6 +39,12 @@
     background-color: transparent;
     background-image: url("../images/icons/icons-sprite-16x16.png");
     background-repeat: no-repeat;
+}
+
+.button-container.button-icon-type-none .button-icon {
+    background: transparent none 0px 0px;
+    width: 0px;
+    height: 0px;
 }
 
 .button-container.button-icon-type-add .button-icon {

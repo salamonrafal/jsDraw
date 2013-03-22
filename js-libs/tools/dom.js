@@ -170,16 +170,37 @@ function domJSDraw (oHTMLElement) {
     };
 
     /**
+     * Function return full height of html element
+     *
+     * @param element
+     * @returns {number}
+     */
+    this.getElementHeight = function(element) {
+        var elementHeight = 0;
+        var sOriginalOverflow = element.style.overflow;
+        var sOriginalHeight = element.style.height;
+
+        element.style.overflow = "";
+        element.style.height = "";
+        elementHeight = element.offsetHeight;
+        element.style.height = sOriginalHeight;
+        element.style.overflow = sOriginalOverflow;
+
+        return elementHeight;
+    };
+
+    /**
      * Hide specific element
      *
      * @param elementName
+     * @param getElementById
      */
-    this.hideElement = function (elementName) {
+    this.hideElement = function (elementName, getElementById) {
 
-        if (this.methodAccess == 'static') {
+        if (this.methodAccess == 'static' || (getElementById !== undefined && getElementById)) {
             var elementObject = _get_html_element(elementName);
 
-            if (elementObject.style === undefined) {
+            if (elementObject !== null && elementObject.style === undefined) {
                 for (var i = 0; i < elementObject.length; i++) {
                     elementObject[i].style.display = 'none';
                 }
@@ -193,6 +214,38 @@ function domJSDraw (oHTMLElement) {
                 }
             } else {
                 this.oHTMLElement.style.display = 'none';
+            }
+        } else {
+            // throw error;
+        }
+
+    };
+
+    /**
+     * Show specific element
+     *
+     * @param elementName
+     * @param getElementById
+     */
+    this.showElement = function (elementName, getElementById) {
+
+        if (this.methodAccess == 'static' || (getElementById !== undefined && getElementById)) {
+            var elementObject = _get_html_element(elementName);
+
+            if (elementObject !== null && elementObject.style === undefined) {
+                for (var i = 0; i < elementObject.length; i++) {
+                    elementObject[i].style.display = 'block';
+                }
+            } else {
+                elementObject.style.display = 'block';
+            }
+        } else if (this.methodAccess == 'HTMLElement') {
+            if (this.oHTMLElement.style === undefined) {
+                for (var i = 0; i < this.oHTMLElement.length; i++) {
+                    this.oHTMLElement[i].style.display = 'block';
+                }
+            } else {
+                this.oHTMLElement.style.display = 'block';
             }
         } else {
             // throw error;

@@ -23,9 +23,70 @@ function menuJSDraw (options) {
     this.workspace_id = '';
 
     /**
+     * Id of menu
+     *
+     * @type {string}
+     */
+    this.id = ''
+
+    /**
+     * Button ID for which generate menu
+     *
+     * @type {string}
+     */
+    this.button_id = '';
+
+    /**
+     * HTML Object Element
+     *
+     * @type htmlObjectElement
+     */
+    this.button_object_element = {};
+
+    /**
+     * Menu items
+     *
+     * @type {Array}
+     */
+    this.items = [];
+
+    /**
+     * Object to modify HTMLElements
+     *
+     * @type {domJSDraw}
+     */
+    this.DOMJsDraw = new domJSDraw();
+
+    /**
      * [ Private Methods ]
      **/
 
+    _create_html_object_menu = function ($this) {
+        var el_div_menu_container = document.createElement('div');
+        var el_ul_menu_container = document.createElement('ul');
+        var el_li_menu_container = document.createElement('li');
+
+        el_div_menu_container.className = 'menu-container';
+        el_ul_menu_container.className = 'menu-list-items';
+
+        el_div_menu_container.setAttribute('id', $this.id);
+        el_ul_menu_container.setAttribute('id', $this.id + '-items');
+
+        for (var i = 0; i < $this.items.length; i++) {
+            el_li_menu_container = document.createElement('li');
+            el_li_menu_container.setAttribute('id', $this.id + '-item-' + i);
+            el_li_menu_container.className = 'menu-item';
+            el_li_menu_container.appendChild($this.items[i].getHtmlObject());
+            el_ul_menu_container.appendChild(el_li_menu_container);
+        }
+
+        el_div_menu_container.appendChild(el_ul_menu_container);
+        el_div_menu_container.style.left = '-1px';
+        el_div_menu_container.style.marginTop = '3px';
+        el_div_menu_container.style.display = 'none';
+
+        return el_div_menu_container;
+    };
 
     /**
      * Debug function
@@ -59,10 +120,33 @@ function menuJSDraw (options) {
             if (options.workspace_id !== undefined) {
                 this.workspace_id = options.workspace_id;
             }
+
+            if (options.button_id !== undefined) {
+                this.button_id = options.button_id;
+            }
+
+            if (options.id !== undefined) {
+                this.id = options.id;
+            }
+
+            if (options.items !== undefined) {
+                this.items = options.items;
+            }
+
+            if (options.button_object_element !== undefined) {
+                this.button_object_element = options.button_object_element;
+            }
         }
 
+        this.DOMJsDraw = new domJSDraw();
+
         return this;
-    }
+    };
+
+
+    this.getHtmlObject = function () {
+        return _create_html_object_menu (this);
+    };
 
     this.__construct(options);
 }

@@ -1,3 +1,7 @@
+ul.buttonset-container {
+    border-bottom: 1px solid #2a2a2a;
+}
+
 ul.buttonset-container li.buttonset-item-container div.buttonset-button-conatiner{
     border: none;
     box-shadow: none !important;
@@ -5,27 +9,32 @@ ul.buttonset-container li.buttonset-item-container div.buttonset-button-conatine
 }
 
 ul.buttonset-container li.buttonset-item-container {
-    border: 0px solid #757575;
-    border-radius: 0px;
+    border: none;
     padding: 0px;
     margin: 0px;
 }
 
 ul.buttonset-container li.buttonset-item-container div.buttonset-button-conatiner {
-    border: 1px solid #757575;
-    border-right: 1px solid #a5aaad;
+    border: 1px solid #4e514e;
+    border-top: none;
+    border-bottom: none;
+    border-right: 1px solid #e2e7ea;
     border-radius: 0px;
     margin: 0px;
-    padding: 5px;
+    padding: 3px;
 }
 
 ul.buttonset-container li.buttonset-item-container:first-child div.buttonset-button-conatiner {
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 0px 0px 0px 0px;
+    border-left: none;
 }
 
 ul.buttonset-container li.buttonset-item-container.buttonset-item-last div.buttonset-button-conatiner {
-    border: 1px solid #757575;
-    border-radius: 0px 5px 5px 0px;
+    border: 1px solid #2a2a2a;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    border-radius: 0px 0px 0px 0px;
 }
 
 ul.buttonset-container li.buttonset-item-container div.buttonset-button-conatiner.button-hover-active {
