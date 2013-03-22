@@ -108,7 +108,7 @@ function toolbarJSDraw (options) {
      * @returns {buttonJSDraw}
      * @private
      */
-    var _create_button_item = function (button_id, button_name, button_style, button_active, button_events, button_menu_items) {
+    var _create_button_item = function (button_id, button_name, button_style, button_active, button_events, button_menu_items, isMenuItem) {
         if(button_style ===  undefined) {
             button_style = {
                 icon: 'none',
@@ -167,6 +167,12 @@ function toolbarJSDraw (options) {
             button_menu_items = [];
         }
 
+        if (isMenuItem === undefined) {
+            isMenuItem = false;
+        }
+
+        _debug(isMenuItem);
+
         return new buttonJSDraw ({
             workspace_id: this.workspace_id,
             name: button_name,
@@ -174,7 +180,8 @@ function toolbarJSDraw (options) {
             style: button_style,
             active: button_active,
             events: button_events,
-            menu_items: button_menu_items
+            menu_items: button_menu_items,
+            menu_item: isMenuItem
         });
     };
 
@@ -200,72 +207,229 @@ function toolbarJSDraw (options) {
             }
         }
 
-        var menu_01_manage_rooms = [];
-
-        // Button 01/01 - Dodaj pomieszczenie
-        menu_01_manage_rooms.push(
-            _create_button_item(
-                'menu-01-01-add-place',
-                'Dodaj miejsce',
-                {
-                    icon: 'none',
-                    icon_position: 'left',
-                    text: true
-                },
-                true,
-                {
-                    click: function ($this, e) {
-                        _debug('click button menu - Dodaj miejsce');
-                        _debug(e);
-
-                        e.preventDefault();
-                    }
-                }
-            )
-        );
-
-        // Button 01/02 - Dodaj ścianę
-        menu_01_manage_rooms.push(
-            _create_button_item(
-                'menu-01-02-add-wall',
-                'Dodaj ścianę',
-                {
-                    icon: 'none',
-                    icon_position: 'left',
-                    text: true
-                },
-                true,
-                {
-                    click: function ($this, e) {
-                        _debug('click button menu - Dodaj ścianę');
-                        _debug(e);
-
-                        e.preventDefault();
-                    }
-                }
-            )
-        );
-
         // Button 01 - Zarządzaj miejscami
-        this.addButton(
-            'menu-01-manage-rooms',
-            'Zarządzaj',
-            {
-                icon: 'none',
-                icon_position: 'left',
-                text: true
-            },
-            true,
-            {
-                click: function ($this, e) {
-                    _debug('click button menu - Zarządzaj');
-                    _debug(e);
+            this.addButton(
+                'menu-01-manage-rooms',
+                'Zarządzaj',
+                {
+                    icon: 'none',
+                    icon_position: 'left',
+                    text: true
+                },
+                true,
+                {
+                    click: function ($this, e) {
+                        _debug('click button menu - Zarządzaj');
+                        _debug(e);
 
-                    e.preventDefault();
-                }
-            },
-            menu_01_manage_rooms
-        );
+                        e.preventDefault();
+                    }
+                },
+                [
+                    // Button 01/01 - Dodaj pomieszczenie
+                        _create_button_item(
+                            'menu-01-01-add-place',
+                            'Dodaj miejsce',
+                            {
+                                icon: 'none',
+                                icon_position: 'left',
+                                text: true
+                            },
+                            true,
+                            {
+                                click: function ($this, e) {
+                                    _debug('click button menu - Dodaj miejsce');
+                                    _debug(e);
+
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                }
+                            },
+                            [
+                                // Button 01/01/01 - Dodaj łazienkę
+                                    _create_button_item(
+                                        'menu-01-01-01-add-place-bathroom',
+                                        'Dodaj łazienke',
+                                        {
+                                            icon: 'none',
+                                            icon_position: 'left',
+                                            text: true
+                                        },
+                                        true,
+                                        {
+                                            click: function ($this, e) {
+                                                _debug('click button menu - Dodaj łazienke');
+                                                _debug(e);
+
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            }
+                                        }
+                                    ),
+                                // END. Button 01/01/01 - Dodaj łazienke
+
+                                // Button 01/01/02 - Dodaj kuchnie
+                                    _create_button_item(
+                                        'menu-01-01-02-add-place-kitchen',
+                                        'Dodaj kuchnie',
+                                        {
+                                            icon: 'none',
+                                            icon_position: 'left',
+                                            text: true
+                                        },
+                                        true,
+                                        {
+                                            click: function ($this, e) {
+                                                _debug('click button menu - Dodaj kuchnie');
+                                                _debug(e);
+
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            }
+                                        }
+                                    ),
+                                // END. Button 01/01/02 - Dodaj kuchnie
+
+                                // Button 01/01/03 - Dodaj pokój dzienny
+                                    _create_button_item(
+                                        'menu-01-01-03-add-place-living-room',
+                                        'Dodaj pokój dzienny',
+                                        {
+                                            icon: 'none',
+                                            icon_position: 'left',
+                                            text: true
+                                        },
+                                        true,
+                                        {
+                                            click: function ($this, e) {
+                                                _debug('click button menu - Dodaj pokój dzienny');
+                                                _debug(e);
+
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            }
+                                        }
+                                    ),
+                                // END. Button 01/01/03 - Dodaj pokój dzienny
+
+                                // Button 01/01/04 - Dodaj korytarz
+                                    _create_button_item(
+                                        'menu-01-01-04-add-place-lobby',
+                                        'Dodaj korytarz',
+                                        {
+                                            icon: 'none',
+                                            icon_position: 'left',
+                                            text: true
+                                        },
+                                        true,
+                                        {
+                                            click: function ($this, e) {
+                                                _debug('click button menu - Dodaj korytarz');
+                                                _debug(e);
+
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            }
+                                        }
+                                    )
+                                // END. Button 01/01/04 - Dodaj korytarz
+                            ],
+                            true
+                        ),
+                    // END. Button 01/01 - Dodaj pomieszczenie
+
+                    // Button 01/02 - Dodaj ścianę
+                        _create_button_item(
+                            'menu-01-02-add-wall',
+                            'Dodaj ścianę',
+                            {
+                                icon: 'none',
+                                icon_position: 'left',
+                                text: true
+                            },
+                            true,
+                            {
+                                click: function ($this, e) {
+                                    _debug('click button menu - Dodaj ścianę');
+                                    _debug(e);
+
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                }
+                            },
+                            [
+                                // Button 01/02/01 - Dodaj lewą ściane
+                                    _create_button_item(
+                                        'menu-01-02-01-add-wall-left',
+                                        'Dodaj lewą ściane',
+                                        {
+                                            icon: 'none',
+                                            icon_position: 'left',
+                                            text: true
+                                        },
+                                        true,
+                                        {
+                                            click: function ($this, e) {
+                                                _debug('click button menu - Dodaj lewą ściane');
+                                                _debug(e);
+
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            }
+                                        }
+                                    ),
+                                // END. Button 01/02/01 - Dodaj lewą ściane
+
+                                // Button 01/02/02 - Dodaj prawą ściane
+                                    _create_button_item(
+                                        'menu-01-02-02-add-wall-right',
+                                        'Dodaj prawą ściane',
+                                        {
+                                            icon: 'none',
+                                            icon_position: 'left',
+                                            text: true
+                                        },
+                                        true,
+                                        {
+                                            click: function ($this, e) {
+                                                _debug('click button menu - Dodaj prawą ściane');
+                                                _debug(e);
+
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            }
+                                        }
+                                    ),
+                                // END. Button 01/02/02 - Dodaj prawą ściane
+
+                                // Button 01/02/03 - Dodaj poziomą ściane
+                                _create_button_item(
+                                    'menu-01-02-03-add-wall-front',
+                                    'Dodaj poziomą ściane',
+                                    {
+                                        icon: 'none',
+                                        icon_position: 'left',
+                                        text: true
+                                    },
+                                    true,
+                                    {
+                                        click: function ($this, e) {
+                                            _debug('click button menu - Dodaj poziomą ściane');
+                                            _debug(e);
+
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                        }
+                                    }
+                                )
+                                // END. Button 01/02/03 - Dodaj poziomą ściane
+                            ],
+                            true
+                        )
+                    // END. Button 01/02 - Dodaj ścianę
+                ]
+            );
+        // END. Button 01 - Zarządzaj miejscami
 
         // Button 02 - Oblicz
         this.addButton(
@@ -286,6 +450,7 @@ function toolbarJSDraw (options) {
                 }
             }
         );
+        // END. Button 02 - Oblicz
 
 
         return this;
@@ -313,7 +478,7 @@ function toolbarJSDraw (options) {
      * @param button_active
      * @param button_events
      */
-    this.addButton = function(button_id, button_name, button_style, button_active, button_events, button_menu_items) {
+    this.addButton = function(button_id, button_name, button_style, button_active, button_events, button_menu_items, isMenuItem) {
         if(button_style ===  undefined) {
             button_style = {
                 icon: 'none',
@@ -372,6 +537,10 @@ function toolbarJSDraw (options) {
             button_menu_items = [];
         }
 
+        if (isMenuItem === undefined) {
+            isMenuItem = false;
+        }
+
         this.buttons.push({
             id: button_id,
             object: _create_button_item(
@@ -380,7 +549,8 @@ function toolbarJSDraw (options) {
                 button_style,
                 button_active,
                 button_events,
-                button_menu_items
+                button_menu_items,
+                isMenuItem
             )
         });
     }

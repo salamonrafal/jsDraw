@@ -28,10 +28,6 @@
     background-color: #2a2a2a;
 }
 
-.button-container.button-hover-active .button-label {
-    text-decoration: underline;
-}
-
 .button-container .button-icon {
     width: 16px;
     height: 16px;

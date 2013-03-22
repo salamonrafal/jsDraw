@@ -83,6 +83,13 @@ function buttonJSDraw (options) {
     this.menu_items = [];
 
     /**
+     * Is button part of menu element
+     *
+     * @type {boolean}
+     */
+    this.menu_item = false;
+
+    /**
      * List of css class names
      *
      * @type {Object}
@@ -223,7 +230,8 @@ function buttonJSDraw (options) {
                 button_id: $this.id,
                 id: 'menu-' + $this.id,
                 items: $this.menu_items,
-                button_object_element: el_div_btn_container
+                button_object_element: el_div_btn_container,
+                menuPosition: ($this.menu_item ? 'right': 'bottom')
             });
 
             el_div_btn_container.appendChild(menu.getHtmlObject());
@@ -255,7 +263,6 @@ function buttonJSDraw (options) {
      *
      * @param options
      * @return {*}
-     * @private
      */
     this.__construct = function (options) {
         _debug('constructor of button.js component');
@@ -289,8 +296,12 @@ function buttonJSDraw (options) {
             if (options.menu_items !== undefined) {
                 this.menu_items = options.menu_items;
             }
-        }
 
+            if (options.menu_item !== undefined) {
+                this.menu_item = options.menu_item;
+
+            }
+        }
         this.htmlObject = _create_html_element(this);
         this.DOMJsDraw = new domJSDraw();
 
@@ -300,7 +311,7 @@ function buttonJSDraw (options) {
     /**
      * Return HTML Object
      *
-     * @return {null}
+     * @return htmlObjectElement
      */
     this.getHtmlObject = function() {
         return this.htmlObject;

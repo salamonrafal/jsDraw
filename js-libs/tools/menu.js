@@ -23,6 +23,12 @@ function menuJSDraw (options) {
     this.workspace_id = '';
 
     /**
+     * Position left|bottom|right
+     * @type {string}
+     */
+    this.menuPosition = 'bottom';
+
+    /**
      * Id of menu
      *
      * @type {string}
@@ -65,17 +71,27 @@ function menuJSDraw (options) {
         var el_div_menu_container = document.createElement('div');
         var el_ul_menu_container = document.createElement('ul');
         var el_li_menu_container = document.createElement('li');
+        var class_position = 'menu-container-position-' + $this.menuPosition;
 
-        el_div_menu_container.className = 'menu-container';
+        el_div_menu_container.className = 'menu-container ' + class_position;
         el_ul_menu_container.className = 'menu-list-items';
 
         el_div_menu_container.setAttribute('id', $this.id);
         el_ul_menu_container.setAttribute('id', $this.id + '-items');
 
         for (var i = 0; i < $this.items.length; i++) {
+
+
+
             el_li_menu_container = document.createElement('li');
             el_li_menu_container.setAttribute('id', $this.id + '-item-' + i);
-            el_li_menu_container.className = 'menu-item';
+
+            if (i == ($this.items.length - 1) ) {
+                el_li_menu_container.className = 'menu-item-last';
+            } else {
+                el_li_menu_container.className = 'menu-item';
+            }
+
             el_li_menu_container.appendChild($this.items[i].getHtmlObject());
             el_ul_menu_container.appendChild(el_li_menu_container);
         }
@@ -135,6 +151,10 @@ function menuJSDraw (options) {
 
             if (options.button_object_element !== undefined) {
                 this.button_object_element = options.button_object_element;
+            }
+
+            if (options.menuPosition !== undefined) {
+                this.menuPosition = options.menuPosition;
             }
         }
 
