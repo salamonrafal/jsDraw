@@ -50,3 +50,5 @@ function scaleJSDraw (options) {
 
     this.__construct(options);
 }
+
+scaleJSDraw.prototype = new baseJSDraw();

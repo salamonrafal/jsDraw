@@ -24,13 +24,6 @@ function buttonsetJSDraw (oHTMLElement) {
     this.oHTMLElement = '';
 
     /**
-     * Object to modify HTMLElements
-     *
-     * @type {domJSDraw}
-     */
-    this.DOMJsDraw = new domJSDraw();
-
-    /**
      * List of css class names
      *
      * @type {Object}
@@ -161,3 +154,5 @@ function buttonsetJSDraw (oHTMLElement) {
 
     this.__construct(oHTMLElement);
 }
+
+buttonsetJSDraw.prototype = new baseJSDraw();

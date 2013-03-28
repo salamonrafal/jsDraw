@@ -43,7 +43,6 @@ $jsLibLoader.appendStyles('toolbar.css', function(name, index){
  */
 function toolbarJSDraw (options) {
 
-
     /**
      * HTML ID of workspace
      *
@@ -170,8 +169,6 @@ function toolbarJSDraw (options) {
         if (isMenuItem === undefined) {
             isMenuItem = false;
         }
-
-        _debug(isMenuItem);
 
         return new buttonJSDraw ({
             workspace_id: this.workspace_id,
@@ -557,3 +554,5 @@ function toolbarJSDraw (options) {
 
     this.__construct(options);
 }
+
+toolbarJSDraw.prototype = new baseJSDraw();

@@ -8,11 +8,6 @@ $jsLibLoader.appendScripts('tools/toolbar.js', function (name, index) {
     _debug('JS lib loaded: ' + name);
 });
 
-/* Add tools module  */
-$jsLibLoader.appendScripts('tools/dom.js', function (name, index) {
-    _debug('JS lib loaded: ' + name);
-});
-
 /* Add grids module  */
 $jsLibLoader.appendScripts('plugins/grids.js', function (name, index) {
     _debug('JS lib loaded: ' + name);
@@ -229,6 +224,8 @@ function coreJsDraw (options) {
             'workspace_id': this.getWorkspaceID(),
             'canvasManager': this.canvasManager
         });
+
+        _debug('Version: ' + toolbar.versionBase());
 
         worksapceMainBox.setAttribute('style', 'width: ' + this.workspace_size.width + 'px;');
 

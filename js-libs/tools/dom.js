@@ -255,4 +255,3 @@ function domJSDraw (oHTMLElement) {
 
     this.__construct(oHTMLElement);
 }
-

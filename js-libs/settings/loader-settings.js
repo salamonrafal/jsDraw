@@ -34,7 +34,7 @@ $jsLibLoader.addStyle('base.css', function (name, index) {
  */
 
 /* Add grids draw modules */
-$jsLibLoader.addScripts('plugins/base.js', function (name, index) {
+$jsLibLoader.addScripts('base.js', function (name, index) {
     _debug('JS lib loaded: ' + name);
 });
 

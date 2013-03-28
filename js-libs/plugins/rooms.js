@@ -51,3 +51,5 @@ function roomsJSDraw (options) {
     this.__construct(options);
 }
 
+roomsJSDraw.prototype = new baseJSDraw();
+

@@ -57,13 +57,6 @@ function menuJSDraw (options) {
     this.items = [];
 
     /**
-     * Object to modify HTMLElements
-     *
-     * @type {domJSDraw}
-     */
-    this.DOMJsDraw = new domJSDraw();
-
-    /**
      * [ Private Methods ]
      **/
 
@@ -170,3 +163,5 @@ function menuJSDraw (options) {
 
     this.__construct(options);
 }
+
+menuJSDraw.prototype = new baseJSDraw();

@@ -105,14 +105,6 @@ function buttonJSDraw (options) {
     };
 
     /**
-     * Object to modify HTMLElements
-     *
-     * @type {domJSDraw}
-     */
-    this.DOMJsDraw = new domJSDraw();
-
-
-    /**
      * [ Private Methods ]
      **/
 
@@ -319,3 +311,5 @@ function buttonJSDraw (options) {
 
     this.__construct(options);
 }
+
+buttonJSDraw.prototype = new baseJSDraw();

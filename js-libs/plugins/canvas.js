@@ -96,3 +96,5 @@ function canvasManagerJSDraw (options) {
 
     this.__construct(options);
 }
+
+canvasManagerJSDraw.prototype = new baseJSDraw();

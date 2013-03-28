@@ -50,3 +50,5 @@ function wallsJSDraw (options) {
 
     this.__construct(options);
 }
+
+wallsJSDraw.prototype = new baseJSDraw();

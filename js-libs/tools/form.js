@@ -67,3 +67,5 @@ function formJSDraw (options) {
 
     this.__construct(options);
 }
+
+formJSDraw.prototype = new baseJSDraw();

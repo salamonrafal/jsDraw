@@ -12,7 +12,6 @@ function labelsJSDraw (options) {
      * [ Private Methods ]
      **/
 
-
     /**
      * Debug function
      *
@@ -49,3 +48,5 @@ function labelsJSDraw (options) {
 
     this.__construct(options);
 }
+
+labelsJSDraw.prototype = new baseJSDraw();

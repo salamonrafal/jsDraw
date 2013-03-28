@@ -51,3 +51,5 @@ function gridsJSDraw (options) {
 
     this.__construct(options);
 }
+
+gridsJSDraw.prototype = new baseJSDraw();

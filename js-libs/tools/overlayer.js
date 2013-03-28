@@ -67,3 +67,5 @@ function overlayerJSDraw (options) {
 
     this.__construct(options);
 }
+
+overlayerJSDraw.prototype = new baseJSDraw();

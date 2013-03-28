@@ -1,3 +1,8 @@
+/* Add tools module  */
+$jsLibLoader.appendScripts('tools/dom.js', function (name, index) {
+    _debug('JS lib loaded: ' + name);
+});
+
 /**
  * Created with JetBrains PhpStorm.
  * User: salamr01
@@ -7,6 +12,13 @@
  */
 
 function baseJSDraw (options) {
+
+    /**
+     * Object to modify HTMLElements
+     *
+     * @type {domJSDraw}
+     */
+    this.DOMJsDraw = new domJSDraw();
 
     /** [ Private Methods ]**/
 
@@ -25,18 +37,6 @@ function baseJSDraw (options) {
         }
 
         return this;
-    }
-
-    /**
-     * Debug function
-     *
-     * @param variable
-     * @private
-     */
-    function _debug (variable) {
-        if (console !== undefined && console.log !== undefined) {
-            console.log(variable);
-        }
     }
 
     this.__construct(options);

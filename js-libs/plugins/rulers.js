@@ -50,3 +50,5 @@ function rulersJSDraw (options) {
 
     this.__construct(options);
 }
+
+rulersJSDraw.prototype = new baseJSDraw();
