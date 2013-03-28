@@ -1,12 +1,4 @@
 /**
- * Add CSS styles
- */
-
-$jsLibLoader.appendStyles('menu.css', function(name, index){
-    _debug('CSS lib loaded: ' + name);
-});
-
-/**
  * Created with JetBrains PhpStorm.
  * User: salamr01
  * Date: 25.01.13
@@ -163,5 +155,3 @@ function menuJSDraw (options) {
 
     this.__construct(options);
 }
-
-menuJSDraw.prototype = new baseJSDraw();

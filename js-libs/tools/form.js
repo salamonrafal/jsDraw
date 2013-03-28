@@ -2,9 +2,6 @@
  * Add CSS styles
  */
 
-$jsLibLoader.appendStyles('form.css', function(name, index){
-    _debug('CSS lib loaded: ' + name);
-});
 
 
 /**
@@ -67,5 +64,3 @@ function formJSDraw (options) {
 
     this.__construct(options);
 }
-
-formJSDraw.prototype = new baseJSDraw();

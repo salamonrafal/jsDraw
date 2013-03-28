@@ -136,13 +136,18 @@ function loader () {
      *
      * @param name
      * @param callback
+     * @param priority
      */
-    this.addScripts = function (name, callback) {
+    this.addScripts = function (name, callback, priority) {
         var isAdded = this.checkIsScriptAdded(name);
+
+        if (priority === undefined) {
+            priority = false;
+        }
 
         if (!isAdded) {
             var randNumber = Math.floor((Math.random()*100000000)+1);
-            this.scripts.push({ 'name': name, 'path': this.jsPath + name + '?v=' + randNumber, 'callback' : callback, 'loaded': false });
+            this.scripts.push({ 'name': name, 'path': this.jsPath + name + '?v=' + randNumber, 'callback' : callback, 'loaded': false, 'priority':  priority});
             return this.scripts.length - 1;
         } else {
             return false;
@@ -244,10 +249,14 @@ function loader () {
         var thisCom = this;
         timer = window.setInterval(function(){
             if (thisCom.checkAllScriptsLoaded()) {
-                window.clearInterval(timer);
-                callback.call(this);
+                try {
+                    window.clearInterval(timer);
+                    callback.call(this);
+                } catch (e) {
+
+                }
             }
-        }, 50);
+        }, 25);
     };
 
     /**
@@ -270,7 +279,7 @@ function loader () {
      * Return true if JS Script added
      *
      * @param name
-     * @return {Boolean}
+     * @return {Boolean|Integer}
      */
     this.checkIsScriptAdded = function (name) {
         for (var i = 0; i < this.scripts.length; i++) {
@@ -287,7 +296,7 @@ function loader () {
      * Return true if CSS styles added
      *
      * @param name
-     * @return {Boolean}
+     * @return {Boolean|Integer}
      */
     this.checkIsStyleAdded = function (name) {
         for (var i = 0; i < this.styles.length; i++) {

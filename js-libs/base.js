@@ -1,7 +1,3 @@
-/* Add tools module  */
-$jsLibLoader.appendScripts('tools/dom.js', function (name, index) {
-    _debug('JS lib loaded: ' + name);
-});
 
 /**
  * Created with JetBrains PhpStorm.

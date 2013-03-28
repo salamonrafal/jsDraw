@@ -1,40 +1,4 @@
 /**
- * Load Libs
- **/
-
-/* Add button module  */
-$jsLibLoader.appendScripts('tools/button.js', function (name, index) {
-    _debug('JS lib loaded: ' + name);
-});
-
-/* Add menu module  */
-$jsLibLoader.appendScripts('tools/menu.js', function (name, index) {
-    _debug('JS lib loaded: ' + name);
-});
-
-/* Add buttonset module  */
-$jsLibLoader.appendScripts('tools/buttonset.js', function (name, index) {
-    _debug('JS lib loaded: ' + name);
-});
-
-/* Add overlayer module  */
-$jsLibLoader.appendScripts('tools/overlayer.js', function (name, index) {
-    _debug('JS lib loaded: ' + name);
-});
-
-/* Add form module  */
-$jsLibLoader.appendScripts('tools/form.js', function (name, index) {
-    _debug('JS lib loaded: ' + name);
-});
-
-/**
- * Add CSS styles
- */
-$jsLibLoader.appendStyles('toolbar.css', function(name, index){
-    _debug('CSS lib loaded: ' + name);
-});
-
-/**
  * Created with JetBrains PhpStorm.
  * User: salamr01
  * Date: 25.01.13

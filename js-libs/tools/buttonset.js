@@ -1,12 +1,4 @@
 /**
- * Add CSS styles
- */
-
-$jsLibLoader.appendStyles('buttonset.css', function(name, index){
-    _debug('CSS lib loaded: ' + name);
-});
-
-/**
  * Created with JetBrains PhpStorm.
  * User: salamr01
  * Date: 25.01.13
@@ -154,5 +146,3 @@ function buttonsetJSDraw (oHTMLElement) {
 
     this.__construct(oHTMLElement);
 }
-
-buttonsetJSDraw.prototype = new baseJSDraw();

@@ -2,9 +2,7 @@
  * Add CSS styles
  */
 
-$jsLibLoader.appendStyles('overlayer.css', function(name, index){
-    _debug('CSS lib loaded: ' + name);
-});
+
 
 
 /**
@@ -67,5 +65,3 @@ function overlayerJSDraw (options) {
 
     this.__construct(options);
 }
-
-overlayerJSDraw.prototype = new baseJSDraw();

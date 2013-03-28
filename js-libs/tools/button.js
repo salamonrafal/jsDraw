@@ -1,13 +1,4 @@
 /**
- * Add CSS styles
- */
-
-$jsLibLoader.appendStyles('button.css', function(name, index){
-    _debug('CSS lib loaded: ' + name);
-});
-
-
-/**
  * Created with JetBrains PhpStorm.
  * User: salamr01
  * Date: 25.01.13
@@ -311,5 +302,3 @@ function buttonJSDraw (options) {
 
     this.__construct(options);
 }
-
-buttonJSDraw.prototype = new baseJSDraw();
