@@ -59,6 +59,9 @@ function loader () {
         script.id = splitName[0].replace('/', '-');
 
         script.onload = function () {
+            var msgLoading = document.getElementById('splashscreen-message-script-value');
+            msgLoading.innerHTML = name;
+
             $this.changeLoadScriptStatus(index, true);
             callback.call(this, name, index);
         };
@@ -77,7 +80,6 @@ function loader () {
      * @private
      */
     function _html_append_styles (path, index, name, callback, $this) {
-
         var head = document.getElementsByTagName('head').item(0);
         var styles = document.createElement('link');
         var splitName = name.split('.');
@@ -88,6 +90,9 @@ function loader () {
         styles.id = splitName[0].replace('/', '-');
 
         styles.onload = function () {
+            var msgLoading = document.getElementById('splashscreen-message-style-value');
+            msgLoading.innerHTML = name;
+
             $this.changeLoadStylesStatus(index, true);
             callback.call(this, name, index);
         };
@@ -106,7 +111,6 @@ function loader () {
             console.log(variable);
         }
     }
-
 
     /**
      * [ Public Methods ]
@@ -251,6 +255,10 @@ function loader () {
             if (thisCom.checkAllScriptsLoaded()) {
                 try {
                     window.clearInterval(timer);
+
+                    var splashScreen = document.getElementById('splashscreen');
+                    splashScreen.style.display = 'none';
+
                     callback.call(this);
                 } catch (e) {
 
@@ -315,5 +323,77 @@ function loader () {
      */
     this.getPath = function () {
         return this.path;
+    };
+
+    this.showSplashScreen = function () {
+        var splashScreenContainer = document.createElement('div');
+        var splashScreenBox = document.createElement('div');
+        var splashScreenTop = document.createElement('div');
+        var splashScreenBottom = document.createElement('div');
+        var bodyElement = document.getElementsByTagName('body');
+        var copyrightBox = document.createElement('div');
+        var messageBox = document.createElement('div');
+        var messageBoxP = document.createElement('div');
+        var messageBoxLS = document.createElement('span');
+        var messageBoxVS = document.createElement('span');
+        var messageBoxLC = document.createElement('span');
+        var messageBoxVC = document.createElement('span');
+        var messageSeparator = document.createElement('span');
+
+        splashScreenContainer.className = 'splashscreen-container';
+        splashScreenContainer.setAttribute('id', 'splashscreen');
+
+        splashScreenBox.className = 'splashscreen-box';
+        splashScreenBox.setAttribute('id', 'splashscreen-box');
+
+        splashScreenTop.className = 'splashscreen-box-top';
+        splashScreenTop.setAttribute('id', 'splashscreen-box-top');
+
+        splashScreenBottom.className = 'splashscreen-box-bottom';
+        splashScreenBottom.setAttribute('id', 'splashscreen-box-bottom');
+
+        splashScreenTop.innerHTML = '<div><p>Loading application ...</p></div>';
+
+        messageBox.className = 'splashscreen-box-bottom-message';
+        messageBox.setAttribute('id', 'splashscreen-box-bottom-message');
+
+        copyrightBox.className = 'splashscreen-box-bottom-footer';
+        copyrightBox.setAttribute('id', 'splashscreen-box-bottom-footer');
+
+
+        messageBoxLS.className = 'splashscreen-message-script-label';
+        messageBoxLS.setAttribute('id', 'splashscreen-message-script-label');
+        messageBoxLS.innerHTML = 'Loading Script: ';
+
+        messageBoxVS.className = 'splashscreen-message-script-value';
+        messageBoxVS.setAttribute('id', 'splashscreen-message-script-value');
+        messageBoxVS.innerHTML = 'none';
+
+        messageBoxLC.className = 'splashscreen-message-style-label';
+        messageBoxLC.setAttribute('id', 'splashscreen-message-style-label');
+        messageBoxLC.innerHTML = 'CSS style: ';
+
+        messageBoxVC.className = 'splashscreen-message-style-value';
+        messageBoxVC.setAttribute('id', 'splashscreen-message-style-value');
+        messageBoxVC.innerHTML = 'none';
+
+        messageBoxP.className = 'splashscreen-message-padding';
+        messageSeparator.className = 'splashscreen-message-separator';
+        messageSeparator.innerHTML = ' ';
+
+        messageBoxP.appendChild(messageBoxLS);
+        messageBoxP.appendChild(messageBoxVS);
+        messageBoxP.appendChild(messageSeparator);
+        messageBoxP.appendChild(messageBoxLC);
+        messageBoxP.appendChild(messageBoxVC);
+        messageBox.appendChild(messageBoxP);
+
+        splashScreenBottom.appendChild(messageBox);
+        splashScreenBottom.appendChild(copyrightBox);
+
+        splashScreenBox.appendChild(splashScreenTop);
+        splashScreenBox.appendChild(splashScreenBottom);
+        splashScreenContainer.appendChild(splashScreenBox);
+        bodyElement[0].appendChild(splashScreenContainer);
     };
 }

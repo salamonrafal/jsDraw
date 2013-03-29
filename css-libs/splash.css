@@ -1,0 +1,79 @@
+.splashscreen-container {
+    position: absolute;
+    background: #ffffff;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+.splashscreen-box {
+    border: 1px solid #fff;
+    padding: 0px;
+    position: absolute;
+    left: 35%;
+    top: 15%;
+    width: 400px;
+    height: 250px;
+    box-shadow: 0px 0px 5px #888;
+}
+
+.splashscreen-box-top {
+    background-image: url("../images/splashscreen.png");
+    width: 400px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.splashscreen-box-top div{
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    width: 400px;
+    border-bottom: 1px dashed #a5aaad;
+    margin: 0px 0px 0px 0px;
+}
+
+.splashscreen-box-top div p {
+    margin: 0px;
+    padding: 0px 0px 5px 0px;
+    font-family: Verdana;
+    font-size: 10px;
+}
+
+.splashscreen-box-bottom {
+    overflow: hidden;
+}
+
+.splashscreen-box-bottom-message {
+    height: 25px;
+    background-color: #e2e7ea;
+    padding: 0px;
+    margin: 0px;
+}
+
+.splashscreen-box-bottom-footer {
+    background-image: url("../images/copyright.png");
+    height: 25px;
+    background-color: #a5aaad;
+}
+
+.splashscreen-box-bottom-message span {
+    font-family: Verdana;
+    font-size: 10px;
+}
+
+.splashscreen-message-padding {
+    padding: 2px;
+}
+
+.splashscreen-message-separator {
+    padding-left: 20px;
+}
+
+.splashscreen-message-style-value, .splashscreen-message-script-value{
+    font-weight: bold;
+}

@@ -4,6 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Canvas draw</title>
 
+    <!-- Load CSS libs -->
+    <link rel="stylesheet" media="screen" href="css-libs/splash.css?v=1" />
+
     <!-- Load JS libs -->
     <script src="js-libs/loader.js?v=1" type="text/javascript"><!-- --></script>
     <script src="js-libs/dom.js?v=1" type="text/javascript"><!-- --></script>
@@ -12,25 +15,6 @@
 </head>
 <body>
     <div id="workspace-1" class="workspace-main-container"><span class="no-canvas">Nic nie narysowałem :P</span></div>
-
-    <script type="text/javascript" language="JavaScript">
-    <!--
-        $l(function(){
-            var coreRunner = new coreJsDraw ({
-                'workspace_id': 'workspace-1',
-                'workspace_size': {
-                    'width': 800,
-                    'height': 600
-                },
-                'title': 'Example workspace',
-                'description': 'Example workspace description',
-                'grids': true,
-                'rulers': true
-            }).createWorkspace();
-
-            _debug(coreRunner);
-        });
-    -->
-    </script>
+    <script src="js-libs/settings/app-settings.js" type="text/javascript" language="JavaScript"></script>
 </body>
 </html>

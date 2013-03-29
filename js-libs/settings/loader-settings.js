@@ -6,7 +6,10 @@
  * To change this template use File | Settings | File Templates.
  */
 var $jsLibLoader = new loader();
-var $l = function(callback) { $jsLibLoader.runScripts(callback); };
+var $l = function(callback) {
+    $jsLibLoader.showSplashScreen();
+    $jsLibLoader.runScripts(callback);
+};
 
 
 _debug = function (variable) {
