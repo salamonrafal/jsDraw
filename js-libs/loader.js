@@ -60,7 +60,12 @@ function loader () {
 
         script.onload = function () {
             var msgLoading = document.getElementById('splashscreen-message-script-value');
-            msgLoading.innerHTML = name;
+
+            try {
+                msgLoading.innerHTML = name;
+            } catch(e) {
+                _debug(e);
+            }
 
             $this.changeLoadScriptStatus(index, true);
             callback.call(this, name, index);
@@ -91,7 +96,13 @@ function loader () {
 
         styles.onload = function () {
             var msgLoading = document.getElementById('splashscreen-message-style-value');
-            msgLoading.innerHTML = name;
+
+            try {
+                var msgLoading = document.getElementById('splashscreen-message-style-value');
+                msgLoading.innerHTML = name;
+            } catch(e) {
+                _debug(e);
+            }
 
             $this.changeLoadStylesStatus(index, true);
             callback.call(this, name, index);

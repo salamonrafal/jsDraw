@@ -7,10 +7,19 @@
  */
 var $jsLibLoader = new loader();
 var $l = function(callback) {
+
+    /* Run Splash Screen */
     $jsLibLoader.showSplashScreen();
+
+    /* Load styles */
+    $jsLibLoader.loadStyles();
+
+    /* Load script */
+    $jsLibLoader.loadScripts();
+
+    /* Run script */
     $jsLibLoader.runScripts(callback);
 };
-
 
 _debug = function (variable) {
     if (console !== undefined && console.log !== undefined) {
@@ -56,8 +65,6 @@ $jsLibLoader.addStyle('toolbar.css', function(name, index){
     _debug('CSS lib loaded: ' + name);
 });
 
-
-
 /**
  * Add JS scripts
  */
@@ -96,12 +103,5 @@ $jsLibLoader.addScripts('tools/form.js', function (name, index) {
     _debug('JS lib loaded: ' + name);
     formJSDraw.prototype = new baseJSDraw();
 });
-
-
-/* Load styles */
-$jsLibLoader.loadStyles();
-
-/* Load script */
-$jsLibLoader.loadScripts();
 
 

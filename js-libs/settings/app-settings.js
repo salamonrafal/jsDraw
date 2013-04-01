@@ -2,7 +2,7 @@ $l(function(){
     var coreRunner = new coreJsDraw ({
         'workspace_id': 'workspace-1',
         'workspace_size': {
-            'width': 800,
+            'width': 1000,
             'height': 600
         },
         'title': 'Example workspace',
