@@ -35,6 +35,13 @@ function loader () {
     this.styles = [];
 
     /**
+     * Detect browser & os
+     *
+     * @type {browserDetectJSDraw}
+     */
+    this.detectBrowser = new browserDetectJSDraw();
+
+    /**
      * [ Private Methods ]
      **/
 
@@ -336,6 +343,20 @@ function loader () {
         return this.path;
     };
 
+    /**
+     * Detect browser & os
+     *
+     * @return browserDetectJSDraw
+     */
+    this.detectBrowser = function () {
+        return this.detectBrowser;
+    };
+
+    /**
+     * Show splash screen before loading all styles & JS scripts
+     *
+     * @return void
+     */
     this.showSplashScreen = function () {
         var splashScreenContainer = document.createElement('div');
         var splashScreenBox = document.createElement('div');

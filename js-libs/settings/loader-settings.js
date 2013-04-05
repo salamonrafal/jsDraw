@@ -6,8 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 var $jsLibLoader = new loader();
-var $l = function(callback) {
+var detectBrowser = $jsLibLoader.detectBrowser();
 
+var $l = function(callback) {
     /* Run Splash Screen */
     $jsLibLoader.showSplashScreen();
 
